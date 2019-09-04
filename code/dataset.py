@@ -60,11 +60,32 @@ def make_mask(row_id, df):
     return image_names[0], masks
 
 
+def get_transforms(phase, mean, std):
+    list_transforms = []
+    if phase == "train":
+        list_transforms.extend(
+            [
+                albumentations.HorizontalFlip(), # only horizontal flip as of now
+            ]
+        )
+    list_transforms.extend(
+        [
+            albumentations.Normalize(mean=mean, std=std, p=1),
+            ToTensor(),
+        ]
+    )
+    list_trfms = albumentations.Compose(list_transforms)
+    return list_trfms
+
 class MyDataset(Dataset):
     
     def __init__(self, df, transform=None):
         self.df = df
         self.transform = transform
+        mean = (0.485, 0.456, 0.406)
+        std = (0.229, 0.224, 0.225)
+        phase = "train"
+        self.transforms = get_transforms(phase, mean, std)
     
     def __len__(self):
         return len(self.df)
@@ -73,11 +94,16 @@ class MyDataset(Dataset):
         image_id, mask = make_mask(idx, self.df)
         image = cv2.imread(os.path.join(config.train_img, image_id))
 
-        if self.transform:
-            augmented = self.transform(image=image)
-            image = augmented["image"]
-            # mask = augmented["mask"]
-            # mask = mask[0].permute(2,0,1)
+        augmented = self.transforms(image=image, mask=mask)
+        image = augmented['image']
+        mask = augmented['mask'] # 1x256x1600x4
+        mask = mask[0].permute(2,0,1)
+
+        # if self.transform:
+        #     augmented = self.transform(image=image)
+        #     image = augmented["image"]
+        #     mask = augmented["image"]
+        #     mask = mask[0].permute(2,0,1)
         
         return {"image": image, "label": mask}
 
