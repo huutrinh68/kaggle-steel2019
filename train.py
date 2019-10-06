@@ -297,7 +297,7 @@ def main(args):
 # main ###############################################################
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train model for Steel kaggle competetion.')
-    parser.add_argument('--debug', default=False, type=bool, help='debug mode')
+    parser.add_argument('--debug', default=0, type=int, help='debug mode')
     parser.add_argument('-m', '--model', default='resnet34', type=str, help='model arch')
     parser.add_argument('-d', '--device', default='cpu', type=str, help='train on device')
     parser.add_argument('-f', '--factor', default=0.75, type=float, help='factor to decrease lr')
