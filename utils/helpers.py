@@ -51,7 +51,7 @@ class Logger(object):
         # this handles the flush command by doing nothing.
         # you might want to specify some extra behavior here.
         pass
-    
+
 # create seed random
 def seed_everything(seed):
     random.seed(seed)
@@ -62,7 +62,17 @@ def seed_everything(seed):
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
 
+# report checkpoint when load checkpoint
 def report_checkpoint(checkpoint):
     print('Best Epoch    :', checkpoint['best_epoch'])
     print('Best Dice     :', checkpoint['best_dice'])
     print('Best Dice Arr :', checkpoint['best_dice_arr'])
+
+# accumulate when using ema
+def accumulate(model1, model2, decay=0.99):
+    par1 = model1.state_dict()
+    par2 = model2.state_dict()
+
+    with torch.no_grad():
+        for k in par1.keys():
+            par1[k].data.copy_(par1[k].data * decay + par2[k].data * (1 - decay))
