@@ -8,7 +8,7 @@ from utils.dataset_utils import make_mask
 from augmentations import get_augmetation
 
 
-DATA_DIR = 'data'
+DATA_DIR = '../data'
 
 class SteelDataset(Dataset):
     def __init__(self, df, phase):
