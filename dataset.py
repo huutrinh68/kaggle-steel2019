@@ -32,20 +32,16 @@ class SteelDataset(Dataset):
         return len(self.df)
 
 
-def get_dataframe(df_path):
+def get_dataframe():
     '''
     create dataframe for training, validation
-    ----------
-    parameter
-    df_path: path
-        path of train csv file
     ----------
     return
     df: dataframe
         processed dataframe
     '''
 
-    df = pd.read_csv(df_path)
+    df = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
     df['ImageId'], df['ClassId'] = zip(*df['ImageId_ClassId'].str.split('_'))
     df['ClassId'] = df['ClassId'].astype(int)
     df = df.pivot(index='ImageId', columns='ClassId', values='EncodedPixels')
@@ -53,7 +49,7 @@ def get_dataframe(df_path):
 
     return df
 
-def get_dataloader(total_df, phase):
+def get_dataloader(total_df, phase, args):
     '''
     Get train, valid dataloader
     ----------
@@ -70,24 +66,24 @@ def get_dataloader(total_df, phase):
     train_df, valid_df = train_test_split(
         total_df, 
         test_size=0.2, 
-        stratify=df['defects'], 
+        stratify=total_df['defects'], 
         random_state=42)
         
     if phase == 'train':
         train_dataset = SteelDataset(train_df, phase)
-        return train_dataloader = DataLoader(
+        return DataLoader(
             dataset = train_dataset, 
-            batch_size=4,
-            num_workers=4,
+            batch_size=args.batch_size,
+            num_workers=args.num_workers,
             pin_memory=True,
             shuffle=True)
     
     if phase == 'valid':
         valid_dataset = SteelDataset(valid_df, phase)
-        return valid_dataloader = DataLoader(
+        return DataLoader(
             dataset=valid_dataset,
-            batch_size=4,
-            num_workers=4,
+            batch_size=args.batch_size,
+            num_workers=args.num_workers,
             pin_memory=True,
             shuffle=False
         )
