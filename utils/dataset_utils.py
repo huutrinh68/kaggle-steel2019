@@ -27,9 +27,9 @@ def make_mask(idx, df):
             label = label.split(" ")
             positions = map(int, label[0::2])
             length = map(int, label[1::1])
-            mask = np.zeros(255*1600, dtype=np.uint8)
+            mask = np.zeros(256*1600, dtype=np.uint8)
             for pos, le in zip(positions, length):
                 mask[pos:(pos+le)] = 1
-            masks[:, :, i] = mask.reshape(255, 1600, order='F')
+            masks[:, :, i] = mask.reshape(256, 1600, order='F')
 
     return fname, masks
