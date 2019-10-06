@@ -32,7 +32,7 @@ class SteelDataset(Dataset):
         return len(self.df)
 
 
-def get_dataframe():
+def get_dataframe(args):
     '''
     create dataframe for training, validation
     ----------
@@ -42,6 +42,8 @@ def get_dataframe():
     '''
 
     df = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
+    if args.debug:
+        df = df.iloc[:100]
     df['ImageId'], df['ClassId'] = zip(*df['ImageId_ClassId'].str.split('_'))
     df['ClassId'] = df['ClassId'].astype(int)
     df = df.pivot(index='ImageId', columns='ClassId', values='EncodedPixels')
