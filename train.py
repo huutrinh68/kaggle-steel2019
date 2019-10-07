@@ -175,12 +175,11 @@ def main(args):
 
         # model ########################
         model = init_network()
-        print(args.device)
-        model.to(args.device)
+        model = model.to(args.device)
 
         if args.ema:
             ema_model = copy.deepcopy(model)
-            ema_model.to(args.device)
+            ema_model = ema_model.to(args.device)
         else:
             ema_model = None
 
