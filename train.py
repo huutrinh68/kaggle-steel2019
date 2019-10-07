@@ -124,9 +124,10 @@ def valid(model, valid_loader, criterion, args):
 def main(args):
     # set device ###################
     if 'cuda' in args.device:
+        os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
         os.environ["CUDA_VISIBLE_DEVICES"] = args.device.split(':')[-1]
         torch.backends.cudnn.benchmark=True
-        device = torch.device(args.device)
+    device = torch.device(args.device)
 
     # set log ######################
     log = Logger()
