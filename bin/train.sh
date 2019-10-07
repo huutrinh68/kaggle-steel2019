@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python ../train.py --debug True --batch_size 2 --num_workers 0
+python ../train.py --device cuda:1 --batch_size 4 --num_workers 4
