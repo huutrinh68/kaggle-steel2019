@@ -175,6 +175,7 @@ def main(args):
 
         # model ########################
         model = init_network()
+        print(args.device)
         model.to(args.device)
 
         if args.ema:
