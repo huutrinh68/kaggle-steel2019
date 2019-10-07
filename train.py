@@ -15,6 +15,8 @@ from utils.helpers import AverageMeter, Logger, seed_everything, \
     report_checkpoint, accumulate, save_top_epochs, save_model
 from metrics import dice_score
 
+import torch.nn as nn
+
 import warnings
 warnings.filterwarnings('ignore')
 
