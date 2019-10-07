@@ -310,7 +310,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train model for Steel kaggle competetion.')
     parser.add_argument('--debug', default=0, type=int, help='debug mode')
-    parser.add_argument('-m', '--model', default='resnet34', type=str, help='model arch')
+    parser.add_argument('-m', '--model', default='efficientnet-b5', type=str, help='model arch')
     parser.add_argument('-d', '--device', default='cpu', type=str, help='train on device')
     parser.add_argument('-f', '--factor', default=0.75, type=float, help='factor to decrease lr')
     parser.add_argument('-p', '--patience', default=2, type=int, help='patience epoch number')
