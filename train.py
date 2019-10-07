@@ -243,6 +243,7 @@ def main(args):
         log.write('----------------------------------------------------------------------------------------------- \n')
         start_epoch += 1
         for epoch in range(start_epoch, args.epochs+1):
+            end = time.time()
             # lr for encoder
             lr = optimizer.param_groups[0]['lr']
 
