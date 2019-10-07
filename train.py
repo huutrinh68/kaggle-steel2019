@@ -52,8 +52,8 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
 
             loss = loss / args.accumulate_step
             loss.backward()
-            # with amp.scale_loss(loss, optimizer) as scaled_loss:
-            #     scaled_loss.backward()
+            with amp.scale_loss(loss, optimizer) as scaled_loss:
+                scaled_loss.backward()
 
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
@@ -190,6 +190,11 @@ def main(args):
 
         # optimizer ####################
         optimizer = get_optimizer(model, 'adam')
+
+        # f16 ##########################
+        # Initialization
+        opt_level = 'O1'
+        model, optimizer = amp.initialize(model, optimizer, opt_level=opt_level)
 
         # scheduler ####################
         scheduler = get_scheduler(optimizer, 'reducelronplateau', args)
