@@ -175,7 +175,7 @@ def main(args):
 
         # model ########################
         model = init_network()
-        model.to('cuda:1')
+        model.to(args.device)
 
         if args.ema:
             ema_model = copy.deepcopy(model)
