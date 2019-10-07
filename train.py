@@ -17,6 +17,7 @@ from metrics import dice_score
 
 import torch.nn as nn
 import gc
+from apex import amp
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -51,7 +52,7 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
             losses.update(loss.item()) # or losses.update(loss.item(), inputs.size(0))
 
             loss = loss / args.accumulate_step
-            loss.backward()
+            # loss.backward()
             with amp.scale_loss(loss, optimizer) as scaled_loss:
                 scaled_loss.backward()
 
