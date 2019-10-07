@@ -16,6 +16,7 @@ from utils.helpers import AverageMeter, Logger, seed_everything, \
 from metrics import dice_score
 
 import torch.nn as nn
+import gc
 
 import warnings
 warnings.filterwarnings('ignore')
