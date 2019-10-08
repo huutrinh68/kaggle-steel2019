@@ -129,7 +129,7 @@ def main(args):
     # set device ###################
     if 'cuda' in args.device:
         os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-        os.environ["CUDA_VISIBLE_DEVICES"] = '0,1'#args.device.split(':')[-1]
+        os.environ["CUDA_VISIBLE_DEVICES"] = '0,1'
         torch.backends.cudnn.benchmark=True
     device = torch.device(args.device)
 
