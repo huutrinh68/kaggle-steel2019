@@ -25,7 +25,7 @@ class SteelDataset(Dataset):
         # resize
         orgHeight, orgWidth = img.shape[:2]
         size = (orgHeight/2, orgWidth/2)
-        img = cv2.resize(img, size)
+        img = cv2.resize(img, size, interpolation = cv2.INTER_LINER)
 
 
         # augmetation
