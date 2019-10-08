@@ -20,6 +20,13 @@ class SteelDataset(Dataset):
         fname, mask = make_mask(idx, self.df)
         image_path = os.path.join(DATA_DIR, 'train_images', fname)
         img = cv2.imread(image_path)
+        img = cv2.resize(())
+
+        # resize
+        orgHeight, orgWidth = img.shape[:2]
+        size = (orgHeight/2, orgWidth/2)
+        img = cv2.resize(img, size)
+
 
         # augmetation
         augmented = self.transforms(image=img, mask=mask)
