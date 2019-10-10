@@ -174,8 +174,8 @@ def main(args):
         # data #########################
         total_df = get_dataframe(args, log)
 
-        train_loader = get_dataloader(total_df=total_df, phase='train', args=args, log)
-        valid_loader = get_dataloader(total_df=total_df, phase='valid', args=args, log)
+        train_loader = get_dataloader(total_df, 'train', args, log)
+        valid_loader = get_dataloader(total_df, 'valid', args, log)
 
         # model ########################
         model = init_network(args, log)
