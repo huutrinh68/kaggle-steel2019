@@ -1,4 +1,4 @@
-import albumentations as A
+import albumentations.albumentations as A
 from albumentations.torch import ToTensor
 
 def get_augmetation(phase):
