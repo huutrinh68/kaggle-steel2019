@@ -17,7 +17,7 @@ def get_scheduler(optimizer, type, args, log):
 		scheduler = ReduceLROnPlateau(optimizer, factor=args.factor, patience=args.patience)
 
 	## log
-	log.write(f'--------------------')
+	log.write(f'\n--------------------\n')
 	log.write(f'\nscheduler    = {type}\n')
 	log.write(f'factor         = {args.factor}\n')
 	log.write(f'patience       = {args.patience}\n')

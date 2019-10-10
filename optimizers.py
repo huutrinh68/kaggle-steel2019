@@ -18,7 +18,7 @@ def get_optimizer(model, type, log):
             ])
     
     ## log
-    log.write(f'--------------------')
+    log.write(f'\n--------------------\n')
     log.write(f'\noptimizer   = {type}\n')
     log.write(f'encoder lr  = 5e-4\n')
     log.write(f'decoder lr  = 5e-3\n')

@@ -9,7 +9,7 @@ def init_network(args, log):
     model = model.to(args.device)
 
     ## log
-    log.write(f'--------------------')
+    log.write(f'\n--------------------\n')
     log.write(f'model arch         = {args.model}\n')
     log.write(f'encoder_weights    = {args.encoder_weights}\n')
     log.write(f'classes            = {args.classes}\n')
