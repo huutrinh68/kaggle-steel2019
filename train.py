@@ -180,7 +180,7 @@ def main(args):
 
 
         # model ########################
-        model = init_network()
+        model = init_network(args)
         model = model.to(device)
 
         if args.ema:
