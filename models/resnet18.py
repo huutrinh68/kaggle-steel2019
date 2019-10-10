@@ -11,7 +11,7 @@ def init_network(args, log):
     ## log
     log.write(f'--------------------')
     log.write(f'model arch         = {args.model}\n')
-    log.write(f'encoder_weights    = {args.mencoder_weightsodel}\n')
+    log.write(f'encoder_weights    = {args.encoder_weights}\n')
     log.write(f'classes            = {args.classes}\n')
     log.write(f'activation         = {args.activation}\n')
     log.write(f'move to            = {args.device}\n')
