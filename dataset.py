@@ -32,7 +32,7 @@ class SteelDataset(Dataset):
         return len(self.df)
 
 
-def get_dataframe(args):
+def get_dataframe(args, log):
     '''
     create dataframe for training, validation
     ----------
@@ -50,9 +50,10 @@ def get_dataframe(args):
     df = df.pivot(index='ImageId', columns='ClassId', values='EncodedPixels')
     df['defects'] = df.count(axis=1)
 
+    log.write(f'\nlen(defects)     = {len(df['defects'])}\n')
     return df
 
-def get_dataloader(total_df, phase, args):
+def get_dataloader(total_df, phase, args, log):
     '''
     Get train, valid dataloader
     ----------
@@ -71,10 +72,10 @@ def get_dataloader(total_df, phase, args):
         test_size=0.2, 
         stratify=total_df['defects'], 
         random_state=42)
-        
+
     if phase == 'train':
         train_dataset = SteelDataset(train_df, phase)
-        return DataLoader(
+        dataloader =  DataLoader(
             dataset = train_dataset, 
             batch_size=args.batch_size,
             num_workers=args.num_workers,
@@ -83,10 +84,18 @@ def get_dataloader(total_df, phase, args):
     
     if phase == 'valid':
         valid_dataset = SteelDataset(valid_df, phase)
-        return DataLoader(
+        dataloader =  DataLoader(
             dataset=valid_dataset,
             batch_size=args.batch_size,
             num_workers=args.num_workers,
             pin_memory=True,
             shuffle=False
         )
+    ## log
+    log.write(f'\ntest_split  = 0.2\n')
+    log.write(f'seed          = 42\n')
+    log.write(f'batch_size    = {args.batch_size}\n')
+    log.write(f'num_workers   = {args.num_workers}\n')
+    log.write(f'data type     = {phase}\n')
+    log.write(f'len(dataset)  = {len(dataloader)}\n')
+    return dataloader

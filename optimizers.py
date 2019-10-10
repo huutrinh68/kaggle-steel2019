@@ -1,7 +1,7 @@
 '''Get optimizer for model'''
 import torch
 
-def get_optimizer(model, type):
+def get_optimizer(model, type, log):
     '''
     return optimizer
     ----
@@ -16,4 +16,11 @@ def get_optimizer(model, type):
             {'params': model.encoder.parameters(), 'lr': 5e-4},
             {'params': model.decoder.parameters(), 'lr': 5e-3},
             ])
+    
+    ## log
+    log.write(f'--------------------')
+    log.write(f'\noptimizer   = {type}\n')
+    log.write(f'encoder lr  = 5e-4\n')
+    log.write(f'decoder lr  = 5e-3\n')
+
     return optimizer

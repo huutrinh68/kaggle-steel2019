@@ -2,6 +2,7 @@ import argparse
 import os 
 import time
 import json
+from datetime import datetime
 
 import torch 
 import numpy as np
@@ -168,29 +169,26 @@ def main(args):
         best_dice_arr = np.zeros(3)
         early_stopping_count = 0
         seed_everything(args.seed)
+        log.write(f'set seed to {args.seed}\n')
 
         # data #########################
-        total_df = get_dataframe(args)
+        total_df = get_dataframe(args, log)
 
-        train_loader = get_dataloader(total_df=total_df, phase='train', args=args)
-        valid_loader = get_dataloader(total_df=total_df, phase='valid', args=args)
-        
-        log.write(f"train length: {len(train_loader)}\n")
-        log.write(f"valid length: {len(valid_loader)}\n")
-
+        train_loader = get_dataloader(total_df=total_df, phase='train', args=args, log)
+        valid_loader = get_dataloader(total_df=total_df, phase='valid', args=args, log)
 
         # model ########################
-        model = init_network(args)
-        model = model.to(device)
+        model = init_network(args, log)
 
         if args.ema:
+            log.write('using ema...\n')
             ema_model = copy.deepcopy(model)
             ema_model = ema_model.to(device)
         else:
             ema_model = None
 
         # optimizer ####################
-        optimizer = get_optimizer(model, 'adam')
+        optimizer = get_optimizer(model, 'adam', log)
 
         # f16 ##########################
         # Initialization
@@ -198,7 +196,7 @@ def main(args):
         # model, optimizer = amp.initialize(model, optimizer, opt_level=opt_level)
 
         # scheduler ####################
-        scheduler = get_scheduler(optimizer, 'reducelronplateau', args)
+        scheduler = get_scheduler(optimizer, 'reducelronplateau', args, log)
 
         # criterion ####################
         criterion = get_criterion()
@@ -246,7 +244,8 @@ def main(args):
                 log.write(f">> No checkpoint found at '{model_fpath}'\n")
         
         # train model ##################
-        log.write('** start training here! **\n')
+        start_time = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+        log.write(f'** start training here! fold{fold}th {start_time} **\n')
         log.write('\n')
         log.write('epoch    iter      rate     | smooth_loss/dice | valid_loss/dice | best_epoch/best_score |  min \n')
         log.write('----------------------------------------------------------------------------------------------- \n')
@@ -311,6 +310,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train model for Steel kaggle competetion.')
     parser.add_argument('--debug', default=0, type=int, help='debug mode')
     parser.add_argument('-m', '--model', default='efficientnet-b5', type=str, help='model arch')
+    parser.add_argument('--encoder_weights', default='imagenet', type=str, help='pretrained weights')
+    parser.add_argument('--classes', default=4, type=int, help='number of classes')
+    parser.add_argument('--activation', default='sigmoid', type=str, help='sigmoid or softmax')
     parser.add_argument('-d', '--device', default='cpu', type=str, help='train on device')
     parser.add_argument('-f', '--factor', default=0.75, type=float, help='factor to decrease lr')
     parser.add_argument('-p', '--patience', default=2, type=int, help='patience epoch number')
@@ -330,4 +332,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args)
-    print('\nsucess!')
+    print('\nsucess!\n')

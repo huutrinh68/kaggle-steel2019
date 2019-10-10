@@ -1,5 +1,19 @@
 import segmentation_models_pytorch as smp
 
-def init_network(args):
-    model = smp.Unet(args.model, encoder_weights='imagenet', classes=4, activation='sigmoid')
+def init_network(args, log):
+    model = smp.Unet(
+        encoder_name=args.model, 
+        encoder_weights=args.encoder_weights, 
+        classes=args.classes, 
+        activation=args.activation)
+    model = model.to(args.device)
+
+    ## log
+    log.write(f'--------------------')
+    log.write(f'model arch         = {args.model}\n')
+    log.write(f'encoder_weights    = {args.mencoder_weightsodel}\n')
+    log.write(f'classes            = {args.classes}\n')
+    log.write(f'activation         = {args.activation}\n')
+    log.write(f'move to            = {args.device}\n')
+
     return model
