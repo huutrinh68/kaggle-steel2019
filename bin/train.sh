@@ -2,6 +2,6 @@
 
 python ../train.py \
 --model efficientnet-b5 \
---device cuda:1 \
---batch_size 1 \
+--device cuda:2 \
+--batch_size 4 \
 --num_workers 2
