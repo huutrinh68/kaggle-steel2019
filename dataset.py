@@ -50,7 +50,7 @@ def get_dataframe(args, log):
     df = df.pivot(index='ImageId', columns='ClassId', values='EncodedPixels')
     df['defects'] = df.count(axis=1)
 
-    log.write(f'\nlen(defects)     = {len(df['defects'])}\n')
+    log.write(f"\nlen(defects)     = {len(df['defects'])}\n")
     return df
 
 def get_dataloader(total_df, phase, args, log):
