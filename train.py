@@ -17,7 +17,7 @@ from metrics import dice_score
 
 import torch.nn as nn
 import gc
-from apex import amp
+# from apex import amp
 
 import warnings
 warnings.filterwarnings('ignore')
