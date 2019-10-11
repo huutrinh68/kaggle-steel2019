@@ -35,16 +35,13 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
     
     num_its = len(train_loader)
     end = time.time()
-    
-    # zero out gradients so we can accumulate new ones over batches
-    optimizer.zero_grad()
 
     for idx, (inputs, labels) in enumerate(train_loader, 0):
         # measure data loading time
         data_time.update(time.time() - end)
 
         # zero out gradients so we can accumulate new ones over batches
-        # optimizer.zero_grad()
+        optimizer.zero_grad()
 
         # move data to device
         inputs = inputs.to(args.device, dtype=torch.float)
@@ -88,9 +85,6 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
             print('\r%5.1f   %5d    %0.6f   |  %0.4f  %0.4f  |  ... ' % \
                   (epoch - 1 + (idx + 1) / num_its, idx + 1, lr, losses.avg, dices.avg), \
                    end='', flush=True)
-                   
-        optimizer.zero_grad()
-
 
     return idx, losses.avg, dices.avg
 
