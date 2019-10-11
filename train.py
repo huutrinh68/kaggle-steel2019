@@ -142,7 +142,7 @@ def main(args):
         torch.cuda.empty_cache()
 
         # set directory
-        directory_prefix = f'{args.model}'
+        directory_prefix = f'{args.arch}_{args.model}'
         if fold is not None:
             directory_prefix += f'_fold{fold}'
         log_dir = os.path.join('runs', directory_prefix)
@@ -308,7 +308,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train model for Steel kaggle competetion.')
     parser.add_argument('--debug', default=0, type=int, help='debug mode')
-    parser.add_argument('--arch', default='fpn', type=str, help='network arch')
+    parser.add_argument('--arch', default='unet', type=str, help='network arch: unet or fpn')
     parser.add_argument('-m', '--model', default='efficientnet-b5', type=str, help='model name')
     parser.add_argument('--encoder_weights', default='imagenet', type=str, help='pretrained weights')
     parser.add_argument('--classes', default=4, type=int, help='number of classes')
