@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 python ../train.py \
---arch fpn \
+--arch unet \
 --model efficientnet-b5 \
 --device cuda:2 \
 --batch_size 40 \
