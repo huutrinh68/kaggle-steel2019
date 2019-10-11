@@ -12,7 +12,7 @@ def get_augmetation(phase):
         return albumentations.Compose(train_augmetations, p=1)
     elif phase == 'valid':
         valid_augmetations = [
-            # albumentations.RandomResizedCrop(256, 400),
+            # albumentations.RandomResizedCrop(256, 400), 256, 1600
             albumentations.Resize(256, 400),
             ToTensor(),
         ]
