@@ -4,6 +4,6 @@ python ../train.py \
 --arch fpn \
 --model efficientnet-b5 \
 --device cuda:2 \
---batch_size 50 \
+--batch_size 40 \
 --num_workers 10 \
 --accumulate_step 10
