@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from torch.utils.data import Dataset, DataLoader
-from utils.dataset_utils import make_mask
+from utils.kaggle import make_mask
 from augmentations import get_augmetation
 
 

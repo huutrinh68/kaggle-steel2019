@@ -23,18 +23,18 @@ import gc
 import warnings
 warnings.filterwarnings('ignore')
 
-# train ########################
+#################################################################################################
 def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args):
     batch_time = AverageMeter()
-    data_time = AverageMeter()
-    losses = AverageMeter()
-    dices = AverageMeter()
+    data_time  = AverageMeter()
+    losses     = AverageMeter()
+    dices      = AverageMeter()
 
     # switch to train mode
     model.train() 
     
     num_its = len(train_loader)
-    end = time.time()
+    end     = time.time()
 
     for idx, (inputs, labels) in enumerate(train_loader, 0):
         # measure data loading time
@@ -49,7 +49,7 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
         
         with torch.set_grad_enabled(True):
             outputs = model(inputs)
-            loss = criterion(outputs, labels)
+            loss    = criterion(outputs, labels)
             losses.update(loss.item()) # or losses.update(loss.item(), inputs.size(0))
 
             loss = loss / args.accumulate_step
@@ -61,7 +61,7 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
             optimizer.step()
 
         probs = torch.sigmoid(outputs)
-        dice = dice_score(probs, labels)
+        dice  = dice_score(probs, labels)
         # dice = dice_score(outputs, labels)
         dices.update(dice.item()) # or dices.update(dice.item(), inputs.size(0))
 
@@ -89,12 +89,12 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
     return idx, losses.avg, dices.avg
 
 
-# valid ########################
+#################################################################################################
 def valid(model, valid_loader, criterion, args):
     batch_time = AverageMeter()
-    data_time = AverageMeter()
-    losses = AverageMeter()
-    dices = AverageMeter()
+    data_time  = AverageMeter()
+    losses     = AverageMeter()
+    dices      = AverageMeter()
 
     # switch to evaluate mode
     model.eval()
@@ -106,15 +106,15 @@ def valid(model, valid_loader, criterion, args):
         data_time.update(time.time() -end)
 
         # move variable to device
-        inputs = inputs.to(args.device, dtype=torch.float)
-        labels = labels.to(args.device, dtype=torch.float)
+        inputs  = inputs.to(args.device, dtype=torch.float)
+        labels  = labels.to(args.device, dtype=torch.float)
 
         outputs = model(inputs)
-        loss = criterion(outputs, labels)
-        losses.update(loss.item()) # or losses.update(loss.item(), inputs.size(0))
+        loss    = criterion(outputs, labels)
+        losses.update(loss.item())
 
-        probs = torch.sigmoid(outputs)
-        dice = dice_score(probs, labels)
+        probs   = torch.sigmoid(outputs)
+        dice    = dice_score(probs, labels)
         # dice = dice_score(outputs, labels)
         dices.update(dice.item())
 
@@ -162,11 +162,10 @@ def main(args):
         log.write(f'training fold_{i}\n')
 
         # train setup
-        start_epoch = 0
-        best_epoch = 0
-        best_dice = 0
+        start_epoch   = 0
+        best_epoch    = 0
+        best_dice     = 0
         best_dice_arr = np.zeros(3)
-        early_stopping_count = 0
         seed_everything(args.seed)
         log.write(f'set seed to {args.seed}\n')
 
@@ -211,10 +210,10 @@ def main(args):
                 report_checkpoint(checkpoint)
 
                 # re-itinial train setting
-                start_epoch = checkpoint['epoch']
-                best_epoch = checkpoint['best_epoch']
+                start_epoch   = checkpoint['epoch']
+                best_epoch    = checkpoint['best_epoch']
                 best_dice_arr = checkpoint['best_dice_arr']
-                best_dice = np.max(best_dice_arr)
+                best_dice     = np.max(best_dice_arr)
                 
                 # load model
                 if type(model) == nn.DataParallel: 
@@ -248,6 +247,8 @@ def main(args):
         log.write('\n')
         log.write('epoch    iter      rate     | smooth_loss/dice | valid_loss/dice | best_epoch/best_score |  min \n')
         log.write('----------------------------------------------------------------------------------------------- \n')
+        
+
         start_epoch += 1
         for epoch in range(start_epoch, args.epochs+1):
             end = time.time()
@@ -271,10 +272,8 @@ def main(args):
             is_best = valid_dice >= best_dice
             if is_best:
                 best_epoch = epoch
-                best_dice = valid_dice
-                early_stopping_count = 0
-            else:
-                early_stopping_count += 1
+                best_dice  = valid_dice
+
             
             if args.ema:
                 save_top_epochs(model_out_dir, ema_model, best_dice_arr, valid_dice,
@@ -292,11 +291,12 @@ def main(args):
             if args.ema:
                 save_model(ema_model, model_out_dir, epoch, model_savename, best_dice_arr, is_best=is_best,
                            optimizer=optimizer, best_epoch=best_epoch, best_dice=best_dice, ema=True)
+
             save_model(model, model_out_dir, epoch, model_savename, best_dice_arr, is_best=is_best, 
                        optimizer=optimizer, best_epoch=best_epoch, best_dice=best_dice, ema=False)      
             
             if args.early_stopping:
-                if early_stopping_count >= args.early_stopping:
+                if epoch - best_epoch >= args.early_stopping:
                     print('='*30, '>early stopped!')
                     break
 
@@ -304,7 +304,7 @@ def main(args):
 
 
 
-# main ###############################################################
+#################################################################################################
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train model for Steel kaggle competetion.')
     parser.add_argument('--debug', default=0, type=int, help='debug mode')
