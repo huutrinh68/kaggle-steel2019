@@ -43,7 +43,7 @@ def get_dataframe(args, log):
 
     df = pd.read_csv(os.path.join(DATA_DIR, "train.csv"))
     if args.debug:
-        print('debug mode...\n')
+        log.write('debug mode...\n')
         df = df.iloc[:100]
     df['ImageId'], df['ClassId'] = zip(*df['ImageId_ClassId'].str.split('_'))
     df['ClassId'] = df['ClassId'].astype(int)
