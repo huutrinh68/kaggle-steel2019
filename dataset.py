@@ -79,7 +79,7 @@ def get_dataloader(total_df, phase, args, log):
             dataset = train_dataset, 
             batch_size=args.batch_size,
             num_workers=args.num_workers,
-            pin_memory=True,
+            # pin_memory=True,
             shuffle=True)
     
     if phase == 'valid':
@@ -88,7 +88,7 @@ def get_dataloader(total_df, phase, args, log):
             dataset=valid_dataset,
             batch_size=args.batch_size,
             num_workers=args.num_workers,
-            pin_memory=True,
+            # pin_memory=True,
             shuffle=False
         )
     ## log
