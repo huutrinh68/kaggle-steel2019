@@ -1,7 +1,7 @@
 import segmentation_models_pytorch as smp
 
 def init_network(args, log):
-    if args.arch == 'unet'
+    if args.arch == 'unet':
         model = smp.Unet(
             encoder_name=args.model, 
             encoder_weights=args.encoder_weights, 
