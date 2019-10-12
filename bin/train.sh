@@ -3,7 +3,7 @@
 python ../train.py \
 --arch unet \
 --model efficientnet-b5 \
---device cuda:2 \
+--device cuda:1 \
 --batch_size 40 \
 --num_workers 10 \
 --accumulate_step 10
