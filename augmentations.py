@@ -9,8 +9,10 @@ def get_augmetation(phase):
         train_augmetations = [
             # albumentations.RandomResizedCrop(256, 400),
             # albumentations.Resize(256, 256),
-            albumentations.Resize(256, 512),
+            # albumentations.Resize(256, 512),
+            albumentations.RandomCrop(256, 512),
             albumentations.HorizontalFlip(),
+            albumentations.VerticalFlip(),
             albumentations.Normalize(MEAN, STD),
             ToTensor(),
         ]
@@ -20,6 +22,8 @@ def get_augmetation(phase):
             # albumentations.RandomResizedCrop(256, 400), 256, 1600
             # albumentations.Resize(256, 256),
             albumentations.Resize(256, 512),
+            # albumentations.RandomCrop(256, 512),
+            # albumentations.VerticalFlip(),
             albumentations.Normalize(MEAN, STD),
             ToTensor(),
         ]
