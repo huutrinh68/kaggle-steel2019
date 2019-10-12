@@ -199,7 +199,7 @@ def main(args):
         scheduler = get_scheduler(optimizer, 'reducelronplateau', args, log)
 
         # criterion ####################
-        criterion = get_criterion()
+        criterion = get_criterion(args, log)
 
         if args.resume:
             model_fpath = os.path.join(model_out_dir, args.resume)
@@ -322,6 +322,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_workers', default=0, type=int, help='number worker')
     parser.add_argument('--batch_size', default=2, type=int, help='batchsize number')
     parser.add_argument('--accumulate_step', default=2, type=int, help='accumulate_step')
+    parser.add_argument('--loss_type', default='bcelogit', type=str, help='type of loss')
     parser.add_argument('--ema', action='store_true', default=False)
     parser.add_argument('--ema_decay', type=float, default=0.9999)
     parser.add_argument('--ema_start', type=int, default=0)
