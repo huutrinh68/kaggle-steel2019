@@ -14,7 +14,8 @@ def get_scheduler(optimizer, type, args, log):
 		scheduler
 	'''
 	if type.lower() == 'reducelronplateau':
-		scheduler = ReduceLROnPlateau(optimizer, factor=args.factor, patience=args.patience)
+		# scheduler = ReduceLROnPlateau(optimizer, factor=args.factor, patience=args.patience)
+		scheduler = ReduceLROnPlateau(optimizer, mode="min", patience=3, verbose=True)
 
 	## log
 	log.write(f'\n--------------------\n')
