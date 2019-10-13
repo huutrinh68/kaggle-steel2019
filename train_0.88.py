@@ -315,7 +315,7 @@ class Trainer(object):
         torch.cuda.empty_cache()
         return epoch_loss
 
-        def start(self):
+    def start(self):
         for epoch in range(self.num_epochs):
             self.iterate(epoch, "train")
             state = {
@@ -341,4 +341,21 @@ test_data_folder = "data/test_images"
 model_trainer = Trainer(model)
 model_trainer.start()
 
+
+losses = model_trainer.losses
+dice_scores = model_trainer.dice_scores # overall dice
+iou_scores = model_trainer.iou_scores
+
+def plot(scores, name):
+    plt.figure(figsize=(15,5))
+    plt.plot(range(len(scores["train"])), scores["train"], label=f'train {name}')
+    plt.plot(range(len(scores["train"])), scores["val"], label=f'val {name}')
+    plt.title(f'{name} plot'); plt.xlabel('Epoch'); plt.ylabel(f'{name}');
+    plt.legend(); 
+    # plt.show()
+    plt.savefig(f'{name}.png')
+
+plot(losses, "BCE loss")
+plot(dice_scores, "Dice score")
+plot(iou_scores, "IoU score")
         
