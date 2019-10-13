@@ -1,8 +1,8 @@
 import albumentations
 from albumentations.torch import ToTensor
 
-MEAN = (0.485, 0.456, 0.406)
-STD  = (0.229, 0.224, 0.225)
+IMAGE_RGB_MEAN = [0.485, 0.456, 0.406]
+IMAGE_RGB_STD  = [0.229, 0.224, 0.225]
 
 def get_augmetation(phase):
     if phase == 'train':
@@ -13,7 +13,7 @@ def get_augmetation(phase):
             # albumentations.RandomCrop(256, 512),
             albumentations.HorizontalFlip(),
             albumentations.VerticalFlip(),
-            albumentations.Normalize(MEAN, STD),
+            albumentations.Normalize(IMAGE_RGB_MEAN, IMAGE_RGB_STD),
             ToTensor(),
         ]
         return albumentations.Compose(train_augmetations, p=1)
@@ -24,7 +24,7 @@ def get_augmetation(phase):
             albumentations.Resize(256, 512),
             # albumentations.RandomCrop(256, 512),
             # albumentations.VerticalFlip(),
-            albumentations.Normalize(MEAN, STD),
+            albumentations.Normalize(IMAGE_RGB_MEAN, IMAGE_RGB_STD),
             ToTensor(),
         ]
         return albumentations.Compose(valid_augmetations, p=1)

@@ -245,7 +245,7 @@ class Trainer(object):
     '''This class takes care of training and validation of our model'''
     def __init__(self, model):
         self.num_workers = 6
-        self.batch_size = {"train": 4, "val": 4}
+        self.batch_size = {"train": 20, "val": 20}
         self.accumulation_steps = 32 // self.batch_size['train']
         self.lr = 5e-4
         self.num_epochs = 40
