@@ -335,7 +335,7 @@ class Trainer(object):
             if val_loss < self.best_loss:
                 print("******** New optimal found, saving state ********")
                 state["best_loss"] = self.best_loss = val_loss
-                torch.save(state, "./model_new_resnet152.pth")
+                torch.save(state, "./model_efficientnet-b5.pth")
             print()
 
 sample_submission_path = 'data/sample_submission.csv'
@@ -355,8 +355,8 @@ def plot(scores, name):
     plt.figure(figsize=(15,5))
     plt.plot(range(len(scores["train"])), scores["train"], label=f'train {name}')
     plt.plot(range(len(scores["train"])), scores["val"], label=f'val {name}')
-    plt.title(f'{name} plot'); plt.xlabel('Epoch'); plt.ylabel(f'{name}');
-    plt.legend(); 
+    plt.title(f'{name} plot'); plt.xlabel('Epoch'); plt.ylabel(f'{name}')
+    plt.legend()
     # plt.show()
     plt.savefig(f'{name}.png')
 
