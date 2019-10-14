@@ -5,26 +5,22 @@ IMAGE_RGB_MEAN = [0.485, 0.456, 0.406]
 IMAGE_RGB_STD  = [0.229, 0.224, 0.225]
 
 def get_augmetation(phase):
+    
+    list_transforms = []
+
     if phase == 'train':
-        train_augmetations = [
-            # albumentations.RandomResizedCrop(256, 400),
-            # albumentations.Resize(256, 256),
-            albumentations.Resize(256, 512),
-            # albumentations.RandomCrop(256, 512),
-            albumentations.HorizontalFlip(),
-            albumentations.VerticalFlip(),
+        list_transforms.extend(
+            [
+                albumentations.HorizontalFlip(),
+                albumentations.VerticalFlip(),
+            ]
+        )
+    
+    list_transforms.extend(
+        [
             albumentations.Normalize(IMAGE_RGB_MEAN, IMAGE_RGB_STD),
             ToTensor(),
         ]
-        return albumentations.Compose(train_augmetations, p=1)
-    elif phase == 'valid':
-        valid_augmetations = [
-            # albumentations.RandomResizedCrop(256, 400), 256, 1600
-            # albumentations.Resize(256, 256),
-            albumentations.Resize(256, 512),
-            # albumentations.RandomCrop(256, 512),
-            # albumentations.VerticalFlip(),
-            albumentations.Normalize(IMAGE_RGB_MEAN, IMAGE_RGB_STD),
-            ToTensor(),
-        ]
-        return albumentations.Compose(valid_augmetations, p=1)
+    )
+    
+    return albumentations.Compose(list_transforms, p=1)

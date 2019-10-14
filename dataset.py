@@ -67,11 +67,11 @@ def get_dataloader(total_df, phase, args, log):
         dataloader: Dataloader
     '''
 
-    train_df, valid_df = train_test_split(
+    train_df, val_df = train_test_split(
         total_df, 
         test_size=0.2, 
-        stratify=total_df['defects'], 
-        random_state=42)
+        stratify=df["defects"], 
+        random_state=69)
 
     if phase == 'train':
         train_dataset = SteelDataset(train_df, phase)
@@ -79,8 +79,9 @@ def get_dataloader(total_df, phase, args, log):
             dataset = train_dataset, 
             batch_size=args.batch_size,
             num_workers=args.num_workers,
-            # pin_memory=True,
-            shuffle=True)
+            pin_memory=False,
+            shuffle=True
+            )
     
     if phase == 'valid':
         valid_dataset = SteelDataset(valid_df, phase)
@@ -88,9 +89,10 @@ def get_dataloader(total_df, phase, args, log):
             dataset=valid_dataset,
             batch_size=args.batch_size,
             num_workers=args.num_workers,
-            # pin_memory=True,
-            shuffle=False
-        )
+            pin_memory=False,
+            shuffle=True
+            )
+            
     ## log
     log.write(f'\ntest_split  = 0.2\n')
     log.write(f'seed          = 42\n')
