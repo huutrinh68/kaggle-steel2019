@@ -124,7 +124,7 @@ def provider(
         image_dataset,
         batch_size=batch_size,
         num_workers=num_workers,
-        pin_memory=True,
+        pin_memory=False,
         shuffle=True,   
     )
 
@@ -245,7 +245,7 @@ class Trainer(object):
     '''This class takes care of training and validation of our model'''
     def __init__(self, model):
         self.num_workers = 12
-        self.batch_size = {"train": 10, "val": 10}
+        self.batch_size = {"train": 18, "val": 18}
         self.accumulation_steps = 32 // self.batch_size['train']
         self.lr = 5e-4
         self.num_epochs = 40
