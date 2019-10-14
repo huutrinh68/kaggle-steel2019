@@ -244,8 +244,8 @@ model = smp.Unet(
 class Trainer(object):
     '''This class takes care of training and validation of our model'''
     def __init__(self, model):
-        self.num_workers = 6
-        self.batch_size = {"train": 16, "val": 16}
+        self.num_workers = 12
+        self.batch_size = {"train": 12, "val": 12}
         self.accumulation_steps = 32 // self.batch_size['train']
         self.lr = 5e-4
         self.num_epochs = 40
