@@ -18,9 +18,9 @@ def get_augmetation(phase):
     
     list_transforms.extend(
         [
-            albumentations.Normalize(IMAGE_RGB_MEAN, IMAGE_RGB_STD),
+            albumentations.Normalize(mean=IMAGE_RGB_MEAN, std=IMAGE_RGB_STD),
             ToTensor(),
         ]
     )
-    
+
     return albumentations.Compose(list_transforms, p=1)
