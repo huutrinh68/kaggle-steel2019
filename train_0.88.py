@@ -251,12 +251,17 @@ class Trainer(object):
         self.num_epochs = 40
         self.best_loss = float("inf")
         self.phases = ["train", "val"]
-        self.device = torch.device("cuda:1")
+        self.device = torch.device("cuda:3")
         torch.set_default_tensor_type("torch.cuda.FloatTensor")
         self.net = model
         self.criterion = torch.nn.BCEWithLogitsLoss()
-        self.optimizer = optim.Adam(self.net.parameters(), lr=self.lr)
-        self.scheduler = ReduceLROnPlateau(self.optimizer, mode="min", patience=3, verbose=True)
+        # self.optimizer = optim.Adam(self.net.parameters(), lr=self.lr)
+        self.optimizer = optim.Adam([
+                {'params': model.encoder.parameters(), 'lr': 5e-3},
+                {'params': model.decoder.parameters(), 'lr': 5e-4}, 
+            ])
+        # self.scheduler = ReduceLROnPlateau(self.optimizer, mode="min", patience=3, verbose=True)
+        self.scheduler = ReduceLROnPlateau(optimizer, factor=0.75, patience=2)
 
         self.net = self.net.to(self.device)
         cudnn.benchmark = True
@@ -330,7 +335,7 @@ class Trainer(object):
             if val_loss < self.best_loss:
                 print("******** New optimal found, saving state ********")
                 state["best_loss"] = self.best_loss = val_loss
-                torch.save(state, "./model.pth")
+                torch.save(state, "./model_new_resnet152.pth")
             print()
 
 sample_submission_path = 'data/sample_submission.csv'
