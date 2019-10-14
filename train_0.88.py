@@ -261,7 +261,7 @@ class Trainer(object):
                 {'params': model.decoder.parameters(), 'lr': 5e-4}, 
             ])
         # self.scheduler = ReduceLROnPlateau(self.optimizer, mode="min", patience=3, verbose=True)
-        self.scheduler = ReduceLROnPlateau(optimizer, factor=0.75, patience=2)
+        self.scheduler = ReduceLROnPlateau(self.optimizer, factor=0.75, patience=2)
 
         self.net = self.net.to(self.device)
         cudnn.benchmark = True
