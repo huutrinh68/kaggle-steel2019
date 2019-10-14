@@ -79,7 +79,6 @@ def train(model, ema_model, train_loader, optimizer, criterion, epoch, lr, args)
         # update params by accumulate gradient
         if idx ==0 or (idx+1) % args.accumulate_step == 0 or (idx+1) == num_its:
             optimizer.step() 
-            # model.zero_grad() 
             optimizer.zero_grad()
             
             print('\r', end='', flush=True)

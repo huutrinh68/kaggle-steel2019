@@ -235,7 +235,7 @@ def compute_iou_batch(outputs, labels, classes=None):
 import segmentation_models_pytorch as smp
 
 model = smp.Unet(
-    encoder_name='resnet152', 
+    encoder_name='efficientnet-b5', 
     encoder_weights='imagenet', 
     classes=4, 
     activation='sigmoid')
