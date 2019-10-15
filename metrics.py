@@ -52,7 +52,7 @@ def metric(probability, truth, threshold=0.5, reduction='none'):
 class Meter:
     '''A meter to keep track of iou and dice scores throughout an epoch'''
 
-    def __init__(self, phase, epoch):
+    def __init__(self, epoch):
         self.base_threshold = 0.5 # <<<<<<<<<<< here's the threshold
         self.base_dice_scores = []
         self.dice_neg_scores = []
