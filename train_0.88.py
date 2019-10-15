@@ -235,7 +235,7 @@ def compute_iou_batch(outputs, labels, classes=None):
 import segmentation_models_pytorch as smp
 
 model = smp.Unet(
-    encoder_name='efficientnet-b5', 
+    encoder_name='efficientnet-b7', 
     encoder_weights='imagenet', 
     classes=4, 
     activation='sigmoid')
@@ -335,7 +335,7 @@ class Trainer(object):
             if val_loss < self.best_loss:
                 print("******** New optimal found, saving state ********")
                 state["best_loss"] = self.best_loss = val_loss
-                torch.save(state, "./model_efficientnet-b5.pth")
+                torch.save(state, "./model_efficientnet-b7.pth")
             print()
 
 sample_submission_path = 'data/sample_submission.csv'
