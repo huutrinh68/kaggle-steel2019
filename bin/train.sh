@@ -5,6 +5,6 @@ python ../train.py \
 --model efficientnet-b5 \
 --loss_type bcedice \
 --device cuda:2 \
---batch_size 20 \
+--batch_size 16 \
 --num_workers 10 \
 --accumulate_step 10
