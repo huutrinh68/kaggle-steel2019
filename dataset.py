@@ -67,7 +67,7 @@ def get_dataloader(total_df, phase, args, log):
         dataloader: Dataloader
     '''
 
-    train_df, val_df = train_test_split(
+    train_df, valid_df = train_test_split(
         total_df, 
         test_size=0.2, 
         stratify=total_df["defects"], 
