@@ -275,8 +275,9 @@ def main(args):
                 save_model(ema_model, model_out_dir, epoch, model_savename, best_dice_arr, is_best=is_best,
                            optimizer=optimizer, best_epoch=best_epoch, best_dice=best_dice, ema=True)
 
-            save_model(model, model_out_dir, epoch, model_savename, best_dice_arr, is_best=is_best, 
-                       optimizer=optimizer, best_epoch=best_epoch, best_dice=best_dice, ema=False)      
+            # save every epoch
+            # save_model(model, model_out_dir, epoch, model_savename, best_dice_arr, is_best=is_best, 
+            #            optimizer=optimizer, best_epoch=best_epoch, best_dice=best_dice, ema=False)      
             
             if args.early_stopping:
                 if epoch - best_epoch >= args.early_stopping:
