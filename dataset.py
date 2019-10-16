@@ -70,7 +70,7 @@ def get_dataloader(total_df, phase, args, log):
     train_df, val_df = train_test_split(
         total_df, 
         test_size=0.2, 
-        stratify=df["defects"], 
+        stratify=total_df["defects"], 
         random_state=69)
 
     if phase == 'train':

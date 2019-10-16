@@ -302,7 +302,7 @@ if __name__ == "__main__":
     parser.add_argument('--ema_decay', type=float, default=0.9999)
     parser.add_argument('--ema_start', type=int, default=0)
     parser.add_argument('--folds', action='append', type=int, default=None)
-    parser.add_argument('--seed', type=int, default=42, help='seed number')
+    parser.add_argument('--seed', type=int, default=69, help='seed number')
     parser.add_argument('--resume', default='top1.pth', type=str, 
                         help='name of the latest checkpoint (default: None)')
     parser.add_argument('--early_stopping', type=int, default=10, help='number epoch need to early stop')
