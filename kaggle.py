@@ -532,12 +532,12 @@ def run_make_dummy():
 
             #cv2.rectangle(image,(x0,0),(x1,256),(0,0,255),10)
         ##---
+        
+        # overlay = np.vstack([m for m in mask])
 
-        overlay = np.vstack([m for m in mask])
-
-        image_show('image',image,0.5)
-        image_show_norm('mask',overlay,0,1,0.5)
-        cv2.waitKey(1)
+        # image_show('image',image,0.5)
+        # image_show_norm('mask',overlay,0,1,0.5)
+        # cv2.waitKey(1)
 
 
 
