@@ -216,12 +216,13 @@ def run_check_train():
         print(truth_label.sum(0))
 
     #---
-    truth_mask = torch.from_numpy(truth_mask).float().cuda()
-    truth_label = torch.from_numpy(truth_label).float().cuda()
-    input = torch.from_numpy(input).float().cuda()
+    device = 'cuda:1'
+    truth_mask = torch.from_numpy(truth_mask).float().to(device)
+    truth_label = torch.from_numpy(truth_label).float().to(device)
+    input = torch.from_numpy(input).float().to(device)
 
 
-    net = Net(drop_connect_rate=0.1).cuda()
+    net = Net(drop_connect_rate=0.1).to(device)
     net.load_pretrain(skip=['logit'],is_print=False)#
 
     net = net.eval()
