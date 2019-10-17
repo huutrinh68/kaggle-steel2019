@@ -221,8 +221,7 @@ def run_check_train():
     input = torch.from_numpy(input).float().cuda()
 
 
-    # net = Net(drop_connect_rate=0.1).cuda()
-    net = Net(drop_connect_rate=0.1).cpu()
+    net = Net(drop_connect_rate=0.1).cuda()
     net.load_pretrain(skip=['logit'],is_print=False)#
 
     net = net.eval()
