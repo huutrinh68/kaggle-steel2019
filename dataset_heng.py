@@ -184,55 +184,53 @@ class FixedSampler(Sampler):
 
 
 ##############################################################
-#
+
 # class BalanceClassSampler(Sampler):
-#
+
 #     def __init__(self, dataset, length=None):
 #         self.dataset = dataset
-#
+
 #         if length is None:
 #             length = len(self.dataset)
-#
+
 #         self.length = length
-#
-#
-#
+
+
+
 #     def __iter__(self):
-#
+
 #         df = self.dataset.df
 #         df['Class'] = df['ImageId_ClassId'].str[-1].astype(np.int32)
 #         df['Label'] = (df['EncodedPixels']!='').astype(np.int32)
-#
-#
+
+
 #         label = df['Label'].values*df['Class'].values
 #         unique, count = np.unique(label, return_counts=True)
 #         L = len(label)//5
-#
-#
-#
-#
+
+
 #         pos_index = np.where(self.dataset.label==1)[0]
 #         neg_index = np.where(self.dataset.label==0)[0]
 #         half = self.length//2 + 1
-#
-#
+
+
 #         neg  = np.random.choice(label==0, [L,6], replace=True)
 #         pos1 = np.random.choice(label==1, L, replace=True)
 #         pos2 = np.random.choice(label==2, L, replace=True)
 #         pos3 = np.random.choice(label==3, L, replace=True)
 #         pos4 = np.random.choice(label==4, L, replace=True)
-#
-#
+
+
 #         l = np.stack([neg.reshape,pos1,pos2,pos3,pos3,pos4]).T
 #         l = l.reshape(-1)
 #         l = l[:self.length]
 #         return iter(l)
-#
+
 #     def __len__(self):
 #         return self.length
 
 
-##############################################################
+# ##############################################################
 
 def image_to_input(image,rbg_mean,rbg_std):#, rbg_mean=[0,0,0], rbg_std=[1,1,1]):
     input = image.astype(np.float32)
@@ -484,9 +482,9 @@ def run_check_data_loader():
     print(dataset)
     loader  = DataLoader(
         dataset,
-        sampler     = BalanceClassSampler(dataset),
+        #sampler     = BalanceClassSampler(dataset),
         #sampler     = SequentialSampler(dataset),
-        #sampler     = RandomSampler(dataset),
+        sampler     = RandomSampler(dataset),
         batch_size  = 32,
         drop_last   = False,
         num_workers = 0,
@@ -536,8 +534,8 @@ def run_check_augment():
 
 
         #image, mask = do_noise(image, mask, noise=8)
-        #image, mask = do_random_crop_rescale(image,mask,1600-(256-224),224)
-        image, mask = do_random_crop_rotate_rescale(image,mask,1600-(256-224),224)
+        #image, mask = do_random_crop_rescale(image, mask, 1600-(256-224),224)
+        image, mask = do_random_crop_rotate_rescale(image, mask, 1600-(256-224),224)
 
 
         #image, mask = do_random_scale_rotate(image, mask, 224*2, 224)
@@ -597,10 +595,10 @@ if __name__ == '__main__':
     print( '%s: calling main function ... ' % os.path.basename(__file__))
 
 
-    #run_check_train_dataset()
-    #run_check_test_dataset()
+    # run_check_train_dataset()
+    # run_check_test_dataset()
 
-    #run_check_data_loader()
+    # run_check_data_loader()
     run_check_augment()
 
 
