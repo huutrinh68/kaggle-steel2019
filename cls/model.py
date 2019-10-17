@@ -216,12 +216,9 @@ def run_check_train():
         print(truth_label.sum(0))
 
     #---
-    # truth_mask = torch.from_numpy(truth_mask).float().cuda()
-    # truth_label = torch.from_numpy(truth_label).float().cuda()
-    # input = torch.from_numpy(input).float().cuda()
-    truth_mask = torch.from_numpy(truth_mask).float().cpu()
-    truth_label = torch.from_numpy(truth_label).float().cpu()
-    input = torch.from_numpy(input).float().cpu()
+    truth_mask = torch.from_numpy(truth_mask).float().cuda()
+    truth_label = torch.from_numpy(truth_label).float().cuda()
+    input = torch.from_numpy(input).float().cuda()
 
 
     # net = Net(drop_connect_rate=0.1).cuda()
