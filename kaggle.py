@@ -548,7 +548,7 @@ if __name__ == '__main__':
     # run_check_rle()
     run_make_test_split()
     # run_make_test_split1()
-    # run_make_dummy()
+    run_make_dummy()
 
     run_make_train_split()
 
