@@ -6,7 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from common  import *
 from dataset_heng import *
 from resnet  import *
-from kaggle  import draw_predict_result_label
+from kaggle  import *
 
 
 ####################################################################################################
@@ -287,11 +287,11 @@ def run_check_train():
 
         image = input_to_image(input, IMAGE_RGB_MEAN,IMAGE_RGB_STD)
 
-        for b in range(batch_size):
-            print('%d ------ '%(b))
-            result = draw_predict_result_label(image[b], truth_mask[b], truth_label[b], probability_label[b])
-            image_show('result',result, resize=0.5)
-            cv2.waitKey(0)
+        # for b in range(batch_size):
+        #     print('%d ------ '%(b))
+        #     result = draw_predict_result_label(image[b], truth_mask[b], truth_label[b], probability_label[b])
+        #     image_show('result',result, resize=0.5)
+        #     cv2.waitKey(0)
 
 
 # main #################################################################
