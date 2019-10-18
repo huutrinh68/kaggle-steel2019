@@ -6,7 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from common  import *
 from dataset_heng import *
 from resnet  import *
-from kaggle  import *
+from kaggle  import draw_predict_result_label
 
 
 ####################################################################################################
