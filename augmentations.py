@@ -20,7 +20,7 @@ def get_augmetation(phase):
                 albumentations.RandomCrop(*IMAGE_SIZE),
                 albumentations.RandomBrightness(limit=(-0.25, 0.25)),
                 albumentations.RandomContrast(limit=(-0.15, 0.4)),
-                albumentations.RGBShift(r_shift_limit=10, g_shift_limit=10. b_shift_limit=10),
+                albumentations.RGBShift(r_shift_limit=10, g_shift_limit=10, b_shift_limit=10),
             ]
         )
     
