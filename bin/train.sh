@@ -6,5 +6,5 @@ python ../train.py \
 --loss_type bcelogit \
 --device cuda:1 \
 --batch_size 4 \
---num_workers 10 \
+--num_workers 5 \
 --accumulate_step 10
