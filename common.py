@@ -1,7 +1,7 @@
 from lib.include import *
-from lib.utility.draw import *
+# from lib.utility.draw import *
 from lib.utility.file import *
-from lib.net.rate import *
+# from lib.net.rate import *
 
 
 #---------------------------------------------------------------------------------
