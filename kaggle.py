@@ -1,4 +1,5 @@
 from common  import *
+print('hello from kaggle.py')
 
 
 # https://www.kaggle.com/iafoss/severstal-fast-ai-256x256-crops-sub

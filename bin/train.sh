@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 python ../train.py \
---arch fpn \
---model efficientnet-b5 \
+--arch unet \
+--model efficientnet-b7 \
 --loss_type bcedice \
 --device cuda:2 \
 --batch_size 6 \
