@@ -295,6 +295,17 @@ def draw_predict_result_label(image, truth_mask, truth_label, probability_label,
     return result
 
 
+# make masks data, which to be labels
+def make_mask(df: pd.DataFrame, image_name: str='img.jpg', shape: tuple = (256, 1600)):
+    encoded_masks = df.loc[df['im_id'] == image_name, 'EncodedPixels']
+    masks = np.zeros((shape[0], shape[1], 4), dtype=np.float32)
+
+    for idx, label in enumerate(encoded_masks.values):
+        if label is not np.nan:
+            mask = rle_decode(label)
+            masks[:, :, idx] = mask
+            
+    return masks
 
 ### check ##############################################################
 
