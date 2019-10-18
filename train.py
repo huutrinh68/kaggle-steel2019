@@ -121,7 +121,7 @@ def main(args):
         directory_prefix = f'{args.arch}_{args.model}'
         if fold is not None:
             directory_prefix += f'_fold{fold}'
-        log_dir = os.path.join('unetefficientb7', directory_prefix)
+        log_dir = os.path.join('bcelogit-unetefficientb7', directory_prefix)
         os.makedirs(log_dir, exist_ok=True)
 
         model_out_dir = os.path.join(log_dir, 'checkpoints')
