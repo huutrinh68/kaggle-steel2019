@@ -248,18 +248,18 @@ class Trainer(object):
         self.batch_size = {"train": 4, "val": 4}
         self.accumulation_steps = 32 // self.batch_size['train']
         self.lr = 5e-4
-        self.num_epochs = 200
+        self.num_epochs = 50
         self.best_loss = float("inf")
         self.phases = ["train", "val"]
         self.device = torch.device("cuda:3")
         torch.set_default_tensor_type("torch.cuda.FloatTensor")
         self.net = model
         self.criterion = torch.nn.BCEWithLogitsLoss()
-        # self.optimizer = optim.Adam(self.net.parameters(), lr=self.lr)
-        self.optimizer = optim.Adam([
-                {'params': model.encoder.parameters(), 'lr': 5e-3},
-                {'params': model.decoder.parameters(), 'lr': 5e-4}, 
-            ])
+        self.optimizer = optim.Adam(self.net.parameters(), lr=self.lr)
+        # self.optimizer = optim.Adam([
+        #         {'params': model.encoder.parameters(), 'lr': 5e-3},
+        #         {'params': model.decoder.parameters(), 'lr': 5e-4}, 
+        #     ])
         # self.scheduler = ReduceLROnPlateau(self.optimizer, mode="min", patience=3, verbose=True)
         self.scheduler = ReduceLROnPlateau(self.optimizer, factor=0.75, patience=2)
 
