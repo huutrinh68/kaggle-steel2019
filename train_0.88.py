@@ -117,7 +117,7 @@ def provider(
     df = df.pivot(index='ImageId',columns='ClassId',values='EncodedPixels')
     df['defects'] = df.count(axis=1)
     
-    train_df, val_df = train_test_split(df, test_size=0.2, stratify=df["defects"], random_state=69)
+    train_df, val_df = train_test_split(df, test_size=0.075, stratify=df["defects"], random_state=69)
     df = train_df if phase == "train" else val_df
     image_dataset = SteelDataset(df, data_folder, mean, std, phase)
     dataloader = DataLoader(
@@ -248,7 +248,7 @@ class Trainer(object):
         self.batch_size = {"train": 4, "val": 4}
         self.accumulation_steps = 32 // self.batch_size['train']
         self.lr = 5e-4
-        self.num_epochs = 50
+        self.num_epochs = 60
         self.best_loss = float("inf")
         self.phases = ["train", "val"]
         self.device = torch.device("cuda:3")
