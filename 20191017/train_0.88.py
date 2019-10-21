@@ -117,7 +117,8 @@ def provider(
     df = df.pivot(index='ImageId',columns='ClassId',values='EncodedPixels')
     df['defects'] = df.count(axis=1)
     
-    train_df, val_df = train_test_split(df, test_size=0.2, stratify=df["defects"], random_state=69)
+    # train_df, val_df = train_test_split(df, test_size=0.2, stratify=df["defects"], random_state=69)
+    train_df = df
     df = train_df if phase == "train" else val_df
     image_dataset = SteelDataset(df, data_folder, mean, std, phase)
     dataloader = DataLoader(
@@ -235,7 +236,7 @@ def compute_iou_batch(outputs, labels, classes=None):
 import segmentation_models_pytorch as smp
 
 model = smp.Unet(
-    encoder_name='efficientnet-b7', 
+    encoder_name='efficientnet-b5', 
     encoder_weights='imagenet', 
     classes=4, 
     activation='sigmoid')
@@ -251,17 +252,17 @@ class Trainer(object):
         self.num_epochs = 200
         self.best_loss = float("inf")
         self.phases = ["train", "val"]
-        self.device = torch.device("cuda:3")
+        self.device = torch.device("cuda:0")
         torch.set_default_tensor_type("torch.cuda.FloatTensor")
         self.net = model
         self.criterion = torch.nn.BCEWithLogitsLoss()
-        # self.optimizer = optim.Adam(self.net.parameters(), lr=self.lr)
-        self.optimizer = optim.Adam([
-                {'params': model.encoder.parameters(), 'lr': 5e-3},
-                {'params': model.decoder.parameters(), 'lr': 5e-4}, 
-            ])
-        # self.scheduler = ReduceLROnPlateau(self.optimizer, mode="min", patience=3, verbose=True)
-        self.scheduler = ReduceLROnPlateau(self.optimizer, factor=0.75, patience=2)
+        self.optimizer = optim.Adam(self.net.parameters(), lr=self.lr)
+        # self.optimizer = optim.Adam([
+        #         {'params': model.encoder.parameters(), 'lr': 5e-3},
+        #         {'params': model.decoder.parameters(), 'lr': 5e-4}, 
+        #     ])
+        self.scheduler = ReduceLROnPlateau(self.optimizer, mode="min", patience=3, verbose=True)
+        # self.scheduler = ReduceLROnPlateau(self.optimizer, factor=0.75, patience=2)
 
         self.net = self.net.to(self.device)
         cudnn.benchmark = True
@@ -329,13 +330,19 @@ class Trainer(object):
                 "state_dict": self.net.state_dict(),
                 "optimizer": self.optimizer.state_dict(),
             }
-            with torch.no_grad():
-                val_loss = self.iterate(epoch, "val")
-                self.scheduler.step(val_loss)
-            if val_loss < self.best_loss:
-                print("******** New optimal found, saving state ********")
-                state["best_loss"] = self.best_loss = val_loss
-                torch.save(state, "./model_efficientnet-b7.pth")
+            # with torch.no_grad():
+            #     val_loss = self.iterate(epoch, "val")
+            #     self.scheduler.step(val_loss)
+            # if val_loss < self.best_loss:
+            #     print("******** New optimal found, saving state ********")
+            #     state["best_loss"] = self.best_loss = val_loss
+            #     torch.save(state, "./model_efficientnet-b7.pth")
+
+            # new code ##########
+            self.scheduler.step(self.best_loss)
+            print("******** New optimal found, saving state ********")
+            state["best_loss"] = self.best_loss
+            torch.save(state, "./model_efficientnet-b7.pth")
             print()
 
 sample_submission_path = 'data/sample_submission.csv'
