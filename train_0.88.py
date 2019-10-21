@@ -119,7 +119,7 @@ def provider(
     
     # train_df, val_df = train_test_split(df, test_size=0.2, stratify=df["defects"], random_state=69)
     train_df = df
-    df = train_df if phase == "train" else val_df
+    # df = train_df if phase == "train" else val_df
     image_dataset = SteelDataset(df, data_folder, mean, std, phase)
     dataloader = DataLoader(
         image_dataset,
