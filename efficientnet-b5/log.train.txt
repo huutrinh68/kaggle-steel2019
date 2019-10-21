@@ -1,0 +1,742 @@
+
+--- [START 20191018_202305] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571397786
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571397786
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_202415] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571397855
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571397855
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_202615] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571397976
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571397976
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_202709] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571398030
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571398030
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_203528] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571398528
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571398528
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_204440] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571399080
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571399080
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_204507] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571399107
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571399107
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_204900] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571399341
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571399341
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_205118] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571399478
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571399478
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_205438] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571399679
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571399679
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_211412] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571400853
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571400853
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_211602] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571400962
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571400962
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_211638] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571400999
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571400999
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_212026] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571401227
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571401227
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_212959] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571401800
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571401800
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_213234] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571401954
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571401954
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_214557] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571402757
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571402757
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_214631] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571402792
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571402792
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_215923] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403563
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403563
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_220008] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403608
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403608
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_220022] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403622
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403622
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_220105] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403665
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403665
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_220146] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403707
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403707
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_220200] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403720
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403720
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_220209] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403729
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403729
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_220247] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571403768
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571403768
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_221955] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571404795
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571404795
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_225902] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571407143
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571407143
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_230334] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571407414
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571407414
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_234856] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571410137
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571410137
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_234947] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571410188
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571410188
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_235120] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571410281
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571410281
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_235327] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571410408
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571410408
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+
+--- [START 20191018_235457] ----------------------------------------------------------------
+
+	@common.py:  
+	set random seed
+		SEED = 1571410497
+	set cuda environment
+		torch.__version__              = 1.3.0
+		torch.version.cuda             = 10.1.243
+		torch.backends.cudnn.version() = 7603
+		os['CUDA_VISIBLE_DEVICES']     = 0
+		torch.cuda.device_count()      = 0
+
+
+
+	SEED         = 1571410497
+	PROJECT_PATH = /media/trinhnh1/3A08638408633DCF/kaggle/steel2019
+	__file__     = cls/train.py
+	out_dir      = efficientnet-b5
+
+** dataset setting **
+batch_size = 20
+train_dataset : 
+	mode   = train
+	split  = ['train0_11568.npy']
+	csv    = ['train.csv']
+		len  = 11568
+		num  = 46272
+		neg  = 39731   0.859
+		pos  =  6541   0.141
+		pos1 =   824   0.071   0.126
+		pos2 =     0   0.000   0.000
+		pos3 =     0   0.000   0.000
+		pos4 =     0   0.000   0.000
+
+valid_dataset : 
+	mode   = train
+	split  = ['valid0_1000.npy']
+	csv    = ['train.csv']
+		len  =  1000
+		num  =  4000
+		neg  =  3446   0.862
+		pos  =   554   0.139
+		pos1 =    73   0.073   0.132
+		pos2 =     0   0.000   0.000
+		pos3 =     0   0.000   0.000
+		pos4 =     0   0.000   0.000
+
+
