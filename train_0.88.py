@@ -117,9 +117,8 @@ def provider(
     df = df.pivot(index='ImageId',columns='ClassId',values='EncodedPixels')
     df['defects'] = df.count(axis=1)
     
-    # train_df, val_df = train_test_split(df, test_size=0.2, stratify=df["defects"], random_state=69)
-    train_df = df
-    # df = train_df if phase == "train" else val_df
+    train_df, val_df = train_test_split(df, test_size=0.2, stratify=df["defects"], random_state=69)
+    df = train_df if phase == "train" else val_df
     image_dataset = SteelDataset(df, data_folder, mean, std, phase)
     dataloader = DataLoader(
         image_dataset,
@@ -262,7 +261,6 @@ class Trainer(object):
         #         {'params': model.decoder.parameters(), 'lr': 5e-4}, 
         #     ])
         self.scheduler = ReduceLROnPlateau(self.optimizer, mode="min", patience=3, verbose=True)
-        # self.scheduler = ReduceLROnPlateau(self.optimizer, factor=0.75, patience=2)
 
         self.net = self.net.to(self.device)
         cudnn.benchmark = True
